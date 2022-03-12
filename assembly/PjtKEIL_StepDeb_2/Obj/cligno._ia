@@ -1,0 +1,6 @@
+--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"
+-I.\RTE\_Simu
+-IC:\Programdata\Keil\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+-IC:\Programdata\Keil\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+--pd "__UVISION_VERSION SETA 534" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"
+--list cligno.lst --xref -o .\obj\cligno.o --depend .\obj\cligno.d "Src\Cligno.s"

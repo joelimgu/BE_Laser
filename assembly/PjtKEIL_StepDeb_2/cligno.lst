@@ -1,0 +1,233 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000                 THUMB
+    3 00000000         
+    4 00000000         
+    5 00000000         ; ====================== zone de réservation de données,
+                         ======================================
+    6 00000000         ;Section RAM (read only) :
+    7 00000000                 area             mesdata,data,readonly
+    8 00000000         
+    9 00000000         
+   10 00000000         ;Section RAM (read write):
+   11 00000000                 area             maram,data,readwrite
+   12 00000000         
+   13 00000000         
+   14 00000000         
+   15 00000000         ; ======================================================
+                       =========================================
+   16 00000000         
+   17 00000000         
+   18 00000000         
+   19 00000000         
+   20 00000000         ;Section ROM code (read only) :  
+   21 00000000                 area             moncode,code,readonly
+   22 00000000         ; écrire le code ici  
+   23 00000000         
+   24 00000000                 include          ..\Driver\DriverJeuLaser.inc
+    1 00000000         
+    2 00000000         ; Bibliotheque DriverJeuLaser (ancienne gassp72 adaptée 
+                       2021 - TR)
+    3 00000000         ; Accès en aux fonctions suivantes :
+    4 00000000         ; GPIO :
+    5 00000000         ; GPIOA_Set(char Broche), GPIOB_Set(char Broche), GPIOC_
+                       Set(char Broche)
+    6 00000000         ; GPIOA_Clear(char Broche), GPIOB_Clear(char Broche), GP
+                       IOC_Clear(char Broche)
+    7 00000000         
+    8 00000000         ; PWM :
+    9 00000000         ;/**
+   10 00000000         ; * @brief  Fixe une valeur de PWM, Val, en tick horloge
+                       . La rapport cyclique effectif
+   11 00000000         ; * est donc : rcy = Thaut_ticks / Periode_ticks
+   12 00000000         ; * @note   spécifique Jeu Laser, PWM liée exclusivement
+                        au TIM3, chan3
+   13 00000000         ; * @param  Thaut_ticks : durée de l'état haut d'une imp
+                       ulsion en Ticks
+   14 00000000         ;  * @retval None
+   15 00000000         ; */
+   16 00000000         
+   17 00000000         ;void PWM_Set_Value_TIM3_Ch3( unsigned short int Thaut_t
+                       icks);
+   18 00000000                 import           PWM_Set_Value_TIM3_Ch3
+   19 00000000         
+   20 00000000         
+   21 00000000         
+   22 00000000         ;/**
+   23 00000000         ; * @brief  Mise à 1 d'une broche GPIO 
+   24 00000000         ;  * @note   Une fonction par GPIO
+   25 00000000         ; * @param  Broche : 0 à 15
+   26 00000000         ; * @retval None
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   27 00000000         ; */
+   28 00000000         
+   29 00000000         ;void GPIOA_Set(char Broche);
+   30 00000000                 import           GPIOA_Set
+   31 00000000         
+   32 00000000         ;void GPIOB_Set(char Broche);
+   33 00000000                 import           GPIOB_Set
+   34 00000000         
+   35 00000000         ;void GPIOC_Set(char Broche);
+   36 00000000                 import           GPIOC_Set
+   37 00000000         
+   38 00000000         
+   39 00000000         
+   40 00000000         ;/**
+   41 00000000         ; * @brief  Mise à 0 d'une broche GPIO 
+   42 00000000         ;  * @note   Une fonction par GPIO
+   43 00000000         ; * @param  Broche : 0 à 15
+   44 00000000         ; * @retval None
+   45 00000000         ;  */
+   46 00000000         
+   47 00000000         ;void GPIOA_Clear(char Broche);
+   48 00000000                 import           GPIOA_Clear
+   49 00000000         
+   50 00000000         ;void GPIOB_Clear(char Broche);
+   51 00000000                 import           GPIOB_Clear
+   52 00000000         
+   53 00000000         ;void GPIOC_Clear(char Broche);
+   54 00000000                 import           GPIOC_Clear
+   55 00000000         
+   56 00000000                 end
+   25 00000000         timer_callback
+                               proc
+   26 00000000         
+   27 00000000         
+   28 00000000         
+   29 00000000                 endp
+   30 00000000         
+   31 00000000                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\obj\cligno.d -o.\obj\cligno.o -I.\RTE\_Simu -IC:\Programdata\Kei
+l\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\Programdata\Keil\Arm\Packs\
+Keil\STM32F1xx_DFP\2.3.0\Device\Include --predefine="__EVAL SETA 1" --predefine
+="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 534" --predefine="_RTE
+_ SETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_RTE_ SETA 1" --list=c
+ligno.lst Src\Cligno.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+mesdata 00000000
+
+Symbol: mesdata
+   Definitions
+      At line 7 in file Src\Cligno.s
+   Uses
+      None
+Comment: mesdata unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+maram 00000000
+
+Symbol: maram
+   Definitions
+      At line 11 in file Src\Cligno.s
+   Uses
+      None
+Comment: maram unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+moncode 00000000
+
+Symbol: moncode
+   Definitions
+      At line 21 in file Src\Cligno.s
+   Uses
+      None
+Comment: moncode unused
+timer_callback 00000000
+
+Symbol: timer_callback
+   Definitions
+      At line 25 in file Src\Cligno.s
+   Uses
+      None
+Comment: timer_callback unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+GPIOA_Clear 00000000
+
+Symbol: GPIOA_Clear
+   Definitions
+      At line 48 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: GPIOA_Clear unused
+GPIOA_Set 00000000
+
+Symbol: GPIOA_Set
+   Definitions
+      At line 30 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: GPIOA_Set unused
+GPIOB_Clear 00000000
+
+Symbol: GPIOB_Clear
+   Definitions
+      At line 51 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: GPIOB_Clear unused
+GPIOB_Set 00000000
+
+Symbol: GPIOB_Set
+   Definitions
+      At line 33 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: GPIOB_Set unused
+GPIOC_Clear 00000000
+
+Symbol: GPIOC_Clear
+   Definitions
+      At line 54 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: GPIOC_Clear unused
+GPIOC_Set 00000000
+
+Symbol: GPIOC_Set
+   Definitions
+      At line 36 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: GPIOC_Set unused
+PWM_Set_Value_TIM3_Ch3 00000000
+
+Symbol: PWM_Set_Value_TIM3_Ch3
+   Definitions
+      At line 18 in file Src\..\Driver\DriverJeuLaser.inc
+   Uses
+      None
+Comment: PWM_Set_Value_TIM3_Ch3 unused
+7 symbols
+346 symbols in table

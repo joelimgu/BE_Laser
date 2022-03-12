@@ -1,0 +1,191 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000                 THUMB
+    3 00000000         
+    4 00000000         
+    5 00000000         ; ====================== zone de réservation de données,
+                         ======================================
+    6 00000000         ;Section RAM (read only) :
+    7 00000000                 area             mesdata,data,readonly
+    8 00000000         
+    9 00000000         
+   10 00000000         ;Section RAM (read write):
+   11 00000000                 area             maram,data,readwrite
+   12 00000000         
+   13 00000000 00000000 
+                       VarTime dcd              0           ;VarTime=0 (var de 
+                                                            32bits) 
+   14 00000004         
+   15 00000004         ; ======================================================
+                       =========================================
+   16 00000004         
+   17 00000004         ;constantes (équivalent du #define en C)
+   18 00000004 000DBBA0 
+                       TimeValue
+                               equ              900000
+   19 00000004         
+   20 00000004         
+   21 00000004                 EXPORT           Delay_100ms ; la fonction Delay
+                                                            _100ms est rendue p
+                                                            ublique donc utilis
+                                                            able par d'autres m
+                                                            odules.
+   22 00000004                 export           VarTime
+   23 00000004         
+   24 00000004         
+   25 00000004         ;Section ROM code (read only) :  
+   26 00000004                 area             moncode,code,readonly
+   27 00000000         
+   28 00000000         
+   29 00000000         
+   30 00000000         ; REMARQUE IMPORTANTE 
+   31 00000000         ; Cette manière de créer une temporisation n'est clairem
+                       ent pas la bonne manière de procéder :
+   32 00000000         ; - elle est peu précise
+   33 00000000         ; - la fonction prend tout le temps CPU pour... ne rien 
+                       faire...
+   34 00000000         ;
+   35 00000000         ; Pour autant, la fonction montre :
+   36 00000000         ; - les boucles en ASM
+   37 00000000         ; - l'accés écr/lec de variable en RAM
+   38 00000000         ; - le mécanisme d'appel / retour sous programme
+   39 00000000         ;
+   40 00000000         ; et donc possède un intérêt pour débuter en ASM pur
+   41 00000000         
+   42 00000000         Delay_100ms
+                               proc                         ; ~ déclaration de 
+                                                            fonction Delay_100m
+                                                            s
+   43 00000000         
+   44 00000000 4803            ldr              r0,=VarTime ; r0= &VarTime     
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                                                            
+   45 00000002         
+   46 00000002 4904            ldr              r1,=TimeValue ; r1= 900000
+   47 00000004 6001            str              r1,[r0]     ; VarTime= 900000 
+   48 00000006         
+   49 00000006         BoucleTempo
+   50 00000006 6801            ldr              r1,[r0]     ; r1= 900000       
+                                                             
+   51 00000008         
+   52 00000008 3901            subs             r1,#1       ; r1-=1 
+   53 0000000A 6001            str              r1,[r0]     ; VarTime= 899999
+   54 0000000C D1FB            bne              BoucleTempo ; refait un tour de
+                                                             boucle si VarTime 
+                                                            (résultat soustract
+                                                            ion) /= 0 
+   55 0000000E         
+   56 0000000E 4770            bx               lr          ; ~retour de foncti
+                                                            on (retour de la pr
+                                                            ise en main à la fo
+                                                            nction qui a appelé
+                                                             delay)
+   57 00000010                 endp                         ; end fonction 
+   58 00000010         
+   59 00000010         
+   60 00000010                 END                          ; fin programme  
+              00000000 
+              000DBBA0 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\obj\delay.d -o.\obj\delay.o -I.\RTE\_CibleSondeKEIL -IC:\Program
+data\Keil\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\Programdata\Keil\Ar
+m\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include --predefine="__EVAL SETA 1" --p
+redefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 534" --predefi
+ne="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_RTE_ SETA 1" 
+--list=delay.lst Src\Delay.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+mesdata 00000000
+
+Symbol: mesdata
+   Definitions
+      At line 7 in file Src\Delay.s
+   Uses
+      None
+Comment: mesdata unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+VarTime 00000000
+
+Symbol: VarTime
+   Definitions
+      At line 13 in file Src\Delay.s
+   Uses
+      At line 22 in file Src\Delay.s
+      At line 44 in file Src\Delay.s
+
+maram 00000000
+
+Symbol: maram
+   Definitions
+      At line 11 in file Src\Delay.s
+   Uses
+      None
+Comment: maram unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BoucleTempo 00000006
+
+Symbol: BoucleTempo
+   Definitions
+      At line 49 in file Src\Delay.s
+   Uses
+      At line 54 in file Src\Delay.s
+Comment: BoucleTempo used once
+Delay_100ms 00000000
+
+Symbol: Delay_100ms
+   Definitions
+      At line 42 in file Src\Delay.s
+   Uses
+      At line 21 in file Src\Delay.s
+Comment: Delay_100ms used once
+moncode 00000000
+
+Symbol: moncode
+   Definitions
+      At line 26 in file Src\Delay.s
+   Uses
+      None
+Comment: moncode unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+TimeValue 000DBBA0
+
+Symbol: TimeValue
+   Definitions
+      At line 18 in file Src\Delay.s
+   Uses
+      At line 46 in file Src\Delay.s
+Comment: TimeValue used once
+1 symbol
+344 symbols in table

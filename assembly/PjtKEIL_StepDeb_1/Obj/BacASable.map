@@ -1,0 +1,335 @@
+Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
+
+==============================================================================
+
+Section Cross References
+
+    principal.o(i.main) refers to clock.o(i.CLOCK_Configure) for CLOCK_Configure
+    principal.o(i.main) refers to gpio.o(i.GPIO_Configure) for GPIO_Configure
+    principal.o(i.main) refers to delay.o(moncode) for Delay_100ms
+    principal.o(i.main) refers to gpio.o(i.GPIOB_Set) for GPIOB_Set
+    principal.o(i.main) refers to gpio.o(i.GPIOB_Clear) for GPIOB_Clear
+    delay.o(moncode) refers to delay.o(maram) for VarTime
+    startup-rvds.o(RESET) refers to startup-rvds.o(STACK) for __initial_sp
+    startup-rvds.o(RESET) refers to startup-rvds.o(.text) for Reset_Handler
+    startup-rvds.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    clock.o(i.CLOCK_Configure) refers to clock.o(i.CLOCK_HPRECompute) for CLOCK_HPRECompute
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000F) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$00000011) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry12b.o(.ARM.Collect$$$$0000000E) for __rt_lib_shutdown_fini
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup-rvds.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup-rvds.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to principal.o(i.main) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to principal.o(i.main) for main
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing principal.o(.rev16_text), (4 bytes).
+    Removing principal.o(.revsh_text), (4 bytes).
+    Removing principal.o(.rrx_text), (6 bytes).
+    Removing delay.o(mesdata), (0 bytes).
+    Removing startup-rvds.o(HEAP), (512 bytes).
+    Removing clock.o(.rev16_text), (4 bytes).
+    Removing clock.o(.revsh_text), (4 bytes).
+    Removing clock.o(.rrx_text), (6 bytes).
+    Removing clock.o(i.CLOCK_GetADCCLK), (8 bytes).
+    Removing clock.o(i.CLOCK_GetHCLK), (8 bytes).
+    Removing clock.o(i.CLOCK_GetPCLK1), (8 bytes).
+    Removing clock.o(i.CLOCK_GetPCLK2), (8 bytes).
+    Removing clock.o(i.CLOCK_GetTIMCLK), (36 bytes).
+    Removing gpio.o(.rev16_text), (4 bytes).
+    Removing gpio.o(.revsh_text), (4 bytes).
+    Removing gpio.o(.rrx_text), (6 bytes).
+    Removing gpio.o(i.GPIOA_Clear), (16 bytes).
+    Removing gpio.o(i.GPIOA_Set), (16 bytes).
+    Removing gpio.o(i.GPIOC_Clear), (16 bytes).
+    Removing gpio.o(i.GPIOC_Set), (16 bytes).
+
+20 unused section(s) (total 686 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    Lib\GPIO.c                               0x00000000   Number         0  gpio.o ABSOLUTE
+    Lib\\GPIO.c                              0x00000000   Number         0  gpio.o ABSOLUTE
+    Lib\\clock.c                             0x00000000   Number         0  clock.o ABSOLUTE
+    Lib\clock.c                              0x00000000   Number         0  clock.o ABSOLUTE
+    Src\Delay.s                              0x00000000   Number         0  delay.o ABSOLUTE
+    Src\\principal.c                         0x00000000   Number         0  principal.o ABSOLUTE
+    Src\principal.c                          0x00000000   Number         0  principal.o ABSOLUTE
+    Src\startup-rvds.s                       0x00000000   Number         0  startup-rvds.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    RESET                                    0x08000000   Section      236  startup-rvds.o(RESET)
+    .ARM.Collect$$$$00000000                 0x080000ec   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x080000ec   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x080000f0   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x080000f4   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x080000f4   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x080000f4   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000E                 0x080000fc   Section        4  entry12b.o(.ARM.Collect$$$$0000000E)
+    .ARM.Collect$$$$0000000F                 0x08000100   Section        0  entry10a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00000011                 0x08000100   Section        0  entry11a.o(.ARM.Collect$$$$00000011)
+    .ARM.Collect$$$$00002712                 0x08000100   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x08000100   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .text                                    0x08000104   Section       76  startup-rvds.o(.text)
+    .text                                    0x08000150   Section       36  init.o(.text)
+    i.CLOCK_Configure                        0x08000174   Section        0  clock.o(i.CLOCK_Configure)
+    i.CLOCK_HPRECompute                      0x080001e8   Section        0  clock.o(i.CLOCK_HPRECompute)
+    CLOCK_HPRECompute                        0x080001e9   Thumb Code   116  clock.o(i.CLOCK_HPRECompute)
+    i.GPIOB_Clear                            0x0800025c   Section        0  gpio.o(i.GPIOB_Clear)
+    i.GPIOB_Set                              0x0800026c   Section        0  gpio.o(i.GPIOB_Set)
+    i.GPIO_Configure                         0x0800027c   Section        0  gpio.o(i.GPIO_Configure)
+    i.__scatterload_copy                     0x08000384   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08000392   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08000394   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x080003a4   Section        0  principal.o(i.main)
+    moncode                                  0x080003d0   Section       24  delay.o(moncode)
+    maram                                    0x20000000   Section        4  delay.o(maram)
+    STACK                                    0x20000008   Section     1024  startup-rvds.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  principal.o ABSOLUTE
+    __arm_fini_                               - Undefined Weak Reference
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __decompress                              - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    __Vectors_Size                           0x000000ec   Number         0  startup-rvds.o ABSOLUTE
+    __Vectors                                0x08000000   Data           4  startup-rvds.o(RESET)
+    __Vectors_End                            0x080000ec   Data           0  startup-rvds.o(RESET)
+    __main                                   0x080000ed   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x080000ed   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x080000f1   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x080000f5   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x080000f5   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x080000f5   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x080000f5   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_lib_shutdown_fini                   0x080000fd   Thumb Code     0  entry12b.o(.ARM.Collect$$$$0000000E)
+    __rt_final_cpp                           0x08000101   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000F)
+    __rt_final_exit                          0x08000101   Thumb Code     0  entry11a.o(.ARM.Collect$$$$00000011)
+    Reset_Handler                            0x08000105   Thumb Code    34  startup-rvds.o(.text)
+    SystemInit                               0x08000127   Thumb Code     2  startup-rvds.o(.text)
+    NMI_Handler                              0x08000129   Thumb Code     2  startup-rvds.o(.text)
+    HardFault_Handler                        0x0800012b   Thumb Code     2  startup-rvds.o(.text)
+    MemManage_Handler                        0x0800012d   Thumb Code     2  startup-rvds.o(.text)
+    BusFault_Handler                         0x0800012f   Thumb Code     2  startup-rvds.o(.text)
+    UsageFault_Handler                       0x08000131   Thumb Code     2  startup-rvds.o(.text)
+    SVC_Handler                              0x08000133   Thumb Code     2  startup-rvds.o(.text)
+    DebugMon_Handler                         0x08000135   Thumb Code     2  startup-rvds.o(.text)
+    PendSV_Handler                           0x08000137   Thumb Code     2  startup-rvds.o(.text)
+    SysTick_Handler                          0x08000139   Thumb Code     2  startup-rvds.o(.text)
+    ADC1_2_IRQHandler                        0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    CAN1_RX1_IRQHandler                      0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    CAN1_SCE_IRQHandler                      0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel1_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel2_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel3_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel4_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel5_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel6_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    DMA1_Channel7_IRQHandler                 0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI0_IRQHandler                         0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI15_10_IRQHandler                     0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI1_IRQHandler                         0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI2_IRQHandler                         0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI3_IRQHandler                         0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI4_IRQHandler                         0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    EXTI9_5_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    FLASH_IRQHandler                         0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    I2C1_ER_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    I2C1_EV_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    I2C2_ER_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    I2C2_EV_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    PVD_IRQHandler                           0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    RCC_IRQHandler                           0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    RTCAlarm_IRQHandler                      0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    RTC_IRQHandler                           0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    SPI1_IRQHandler                          0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    SPI2_IRQHandler                          0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TAMPER_IRQHandler                        0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM1_BRK_IRQHandler                      0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM1_CC_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM1_TRG_COM_IRQHandler                  0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM1_UP_IRQHandler                       0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM2_IRQHandler                          0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM3_IRQHandler                          0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    TIM4_IRQHandler                          0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    USART1_IRQHandler                        0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    USART2_IRQHandler                        0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    USART3_IRQHandler                        0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    USBWakeUp_IRQHandler                     0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    USB_HP_CAN1_TX_IRQHandler                0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    USB_LP_CAN1_RX0_IRQHandler               0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    WWDG_IRQHandler                          0x0800013b   Thumb Code     0  startup-rvds.o(.text)
+    __scatterload                            0x08000151   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x08000151   Thumb Code     0  init.o(.text)
+    CLOCK_Configure                          0x08000175   Thumb Code   104  clock.o(i.CLOCK_Configure)
+    GPIOB_Clear                              0x0800025d   Thumb Code    10  gpio.o(i.GPIOB_Clear)
+    GPIOB_Set                                0x0800026d   Thumb Code    10  gpio.o(i.GPIOB_Set)
+    GPIO_Configure                           0x0800027d   Thumb Code   240  gpio.o(i.GPIO_Configure)
+    __scatterload_copy                       0x08000385   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08000393   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08000395   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x080003a5   Thumb Code    40  principal.o(i.main)
+    Delay_100ms                              0x080003d1   Thumb Code    16  delay.o(moncode)
+    Region$$Table$$Base                      0x080003e8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000408   Number         0  anon$$obj.o(Region$$Table)
+    VarTime                                  0x20000000   Data           4  delay.o(maram)
+    __initial_sp                             0x20000408   Data           0  startup-rvds.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x080000ed
+
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000040c, Max: 0x00020000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000408, Max: 0x00020000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x08000000   0x08000000   0x000000ec   Data   RO           65    RESET               startup-rvds.o
+    0x080000ec   0x080000ec   0x00000000   Code   RO          110  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x080000ec   0x080000ec   0x00000004   Code   RO          113    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x080000f0   0x080000f0   0x00000004   Code   RO          116    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x080000f4   0x080000f4   0x00000000   Code   RO          118    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x080000f4   0x080000f4   0x00000000   Code   RO          120    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x080000f4   0x080000f4   0x00000008   Code   RO          121    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x080000fc   0x080000fc   0x00000004   Code   RO          128    .ARM.Collect$$$$0000000E  mc_w.l(entry12b.o)
+    0x08000100   0x08000100   0x00000000   Code   RO          123    .ARM.Collect$$$$0000000F  mc_w.l(entry10a.o)
+    0x08000100   0x08000100   0x00000000   Code   RO          125    .ARM.Collect$$$$00000011  mc_w.l(entry11a.o)
+    0x08000100   0x08000100   0x00000004   Code   RO          114    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000104   0x08000104   0x0000004c   Code   RO           66    .text               startup-rvds.o
+    0x08000150   0x08000150   0x00000024   Code   RO          129    .text               mc_w.l(init.o)
+    0x08000174   0x08000174   0x00000074   Code   RO           73    i.CLOCK_Configure   DriverJeuLaser.lib(clock.o)
+    0x080001e8   0x080001e8   0x00000074   Code   RO           79    i.CLOCK_HPRECompute  DriverJeuLaser.lib(clock.o)
+    0x0800025c   0x0800025c   0x00000010   Code   RO           95    i.GPIOB_Clear       DriverJeuLaser.lib(gpio.o)
+    0x0800026c   0x0800026c   0x00000010   Code   RO           96    i.GPIOB_Set         DriverJeuLaser.lib(gpio.o)
+    0x0800027c   0x0800027c   0x00000108   Code   RO           99    i.GPIO_Configure    DriverJeuLaser.lib(gpio.o)
+    0x08000384   0x08000384   0x0000000e   Code   RO          133    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08000392   0x08000392   0x00000002   Code   RO          134    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08000394   0x08000394   0x0000000e   Code   RO          135    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080003a2   0x080003a2   0x00000002   PAD
+    0x080003a4   0x080003a4   0x0000002c   Code   RO            4    i.main              principal.o
+    0x080003d0   0x080003d0   0x00000018   Code   RO           59    moncode             delay.o
+    0x080003e8   0x080003e8   0x00000020   Data   RO          131    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08000408, Size: 0x00000408, Max: 0x00005000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x08000408   0x00000004   Data   RW           58    maram               delay.o
+    0x20000004   0x0800040c   0x00000004   PAD
+    0x20000008        -       0x00000400   Zero   RW           63    STACK               startup-rvds.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        24          8          0          4          0        308   delay.o
+        44          4          0          0          0       1903   principal.o
+        76         20        236          0       1024        796   startup-rvds.o
+
+    ----------------------------------------------------------------------
+       144         32        268          4       1028       3007   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         0          0          0          0          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+       232         12          0          0          0        148   clock.o
+       296         36          0          0          0        220   gpio.o
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         4          0          0          0          0          0   entry12b.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+
+    ----------------------------------------------------------------------
+       620         64          0          0          0        436   Library Totals
+         2          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       528         48          0          0          0        368   DriverJeuLaser.lib
+        90         16          0          0          0         68   mc_w.l
+
+    ----------------------------------------------------------------------
+       620         64          0          0          0        436   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+       764         96        268          4       1028       3335   Grand Totals
+       764         96        268          4       1028       3335   ELF Image Totals
+       764         96        268          4          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 1032 (   1.01kB)
+    Total RW  Size (RW Data + ZI Data)              1032 (   1.01kB)
+    Total ROM Size (Code + RO Data + RW Data)       1036 (   1.01kB)
+
+==============================================================================
+
