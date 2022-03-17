@@ -1,0 +1,32 @@
+
+
+#include "DriverJeuLaser.h"
+#define TE 0.000091 //période du son 
+#define RCC_FREQ 72000000
+extern void CallbackSon(void);
+
+int main(void)
+{
+
+// ===========================================================================
+// ============= INIT PERIPH (faites qu'une seule fois)  =====================
+// ===========================================================================
+
+// Après exécution : le coeur CPU est clocké à 72MHz ainsi que tous les timers
+CLOCK_Configure();
+Timer_1234_Init_ff( TIM4, TE*RCC_FREQ);
+Active_IT_Debordement_Timer( TIM4, 2, CallbackSon );
+	
+
+	
+	
+
+//============================================================================	
+	
+	
+while	(1)
+	{
+		
+	}
+}
+

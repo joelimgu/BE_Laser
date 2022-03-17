@@ -2,7 +2,7 @@
 
 #include "DriverJeuLaser.h"
 #define RCC_FREQ 72000000
-void timer_callback(void);
+extern void timer_callback(void);
 
 int main(void)
 {
@@ -17,7 +17,7 @@ CLOCK_Configure();
 // configuration du Timer 4 en débordement 100ms
 	
 //** Placez votre code là ** // 
-Timer_1234_Init_ff( TIM4, 0.1*RCC_FREQ); 
+Timer_1234_Init_ff( TIM4, 0.1*RCC_FREQ); // 100 ms*RCC_FREQ
 Active_IT_Debordement_Timer( TIM4, 2, timer_callback );
 	
 	

@@ -21,15 +21,19 @@ ARM Macro Assembler    Page 1
    14 00000000         
    15 00000000         ; ======================================================
                        =========================================
-   16 00000000         
-   17 00000000         
-   18 00000000         
-   19 00000000         
-   20 00000000         ;Section ROM code (read only) :  
-   21 00000000                 area             moncode,code,readonly
-   22 00000000         ; écrire le code ici  
-   23 00000000         
-   24 00000000                 include          ..\Driver\DriverJeuLaser.inc
+   16 00000000 00000000 
+                       FlagCligno
+                               dcd              0
+   17 00000004         
+   18 00000004                 EXPORT           timer_callback 
+                                                            ; NE PAS OUBLIER 
+   19 00000004                 export           FlagCligno
+   20 00000004         
+   21 00000004         ;Section ROM code (read only) :  
+   22 00000004                 area             moncode,code,readonly
+   23 00000000         ; écrire le code ici  
+   24 00000000         
+   25 00000000                 include          ..\Driver\DriverJeuLaser.inc
     1 00000000         
     2 00000000         ; Bibliotheque DriverJeuLaser (ancienne gassp72 adaptée 
                        2021 - TR)
@@ -59,16 +63,16 @@ ARM Macro Assembler    Page 1
    20 00000000         
    21 00000000         
    22 00000000         ;/**
-   23 00000000         ; * @brief  Mise à 1 d'une broche GPIO 
-   24 00000000         ;  * @note   Une fonction par GPIO
-   25 00000000         ; * @param  Broche : 0 à 15
-   26 00000000         ; * @retval None
 
 
 
 ARM Macro Assembler    Page 2 
 
 
+   23 00000000         ; * @brief  Mise à 1 d'une broche GPIO 
+   24 00000000         ;  * @note   Une fonction par GPIO
+   25 00000000         ; * @param  Broche : 0 à 15
+   26 00000000         ; * @retval None
    27 00000000         ; */
    28 00000000         
    29 00000000         ;void GPIOA_Set(char Broche);
@@ -99,14 +103,45 @@ ARM Macro Assembler    Page 2
    54 00000000                 import           GPIOC_Clear
    55 00000000         
    56 00000000                 end
-   25 00000000         timer_callback
-                               proc
    26 00000000         
-   27 00000000         
-   28 00000000         
-   29 00000000                 endp
-   30 00000000         
-   31 00000000                 END
+   27 00000000         timer_callback
+                               proc
+   28 00000000 490A            ldr              r1, =FlagCligno 
+                                                            ; r1 = &FlagCligno
+   29 00000002 680A            ldr              r2, [r1]    ; r2 = *(&FlagClign
+                                                            o) 
+   30 00000004 2A01            cmp              r2, #1
+   31 00000006 D108            bne              sinon
+   32 00000008 F04F 0000       mov              r0, #0
+   33 0000000C 6008            str              r0, [r1]    ; FlagCligno = 0
+   34 0000000E F04F 0001       mov              r0, #1      ; préparer args de 
+                                                            GPIOB_Set
+   35 00000012 B500            push             {lr}        ; NE PAS OUBLIER 
+   36 00000014 F7FF FFFE       bl               GPIOB_Set   ; appel de fonction
+                                                            ? 
+   37 00000018 BD00            pop              {pc}
+   38 0000001A         
+   39 0000001A         
+   40 0000001A         sinon
+   41 0000001A F04F 0001       mov              r0, #1
+   42 0000001E 6008            str              r0, [r1]    ; FlagCligno = 1
+   43 00000020 F04F 0001       mov              r0, #1      ; préparer args de 
+                                                            GPIOB_Clear
+   44 00000024 B500            push             {lr}
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   45 00000026 F7FF FFFE       bl               GPIOB_Clear ; appel de fonction
+                                                            ? 
+   46 0000002A BD00            pop              {pc}
+   47 0000002C         
+   48 0000002C                 endp
+   49 0000002C         
+   50 0000002C                 END
+              00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\obj\cligno.d -o.\obj\cligno.o -I.\RTE\_Simu -IC:\Programdata\Kei
 l\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\Programdata\Keil\Arm\Packs\
@@ -135,6 +170,15 @@ Comment: mesdata unused
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Relocatable symbols
 
+FlagCligno 00000000
+
+Symbol: FlagCligno
+   Definitions
+      At line 16 in file Src\Cligno.s
+   Uses
+      At line 19 in file Src\Cligno.s
+      At line 28 in file Src\Cligno.s
+
 maram 00000000
 
 Symbol: maram
@@ -143,7 +187,7 @@ Symbol: maram
    Uses
       None
 Comment: maram unused
-1 symbol
+2 symbols
 
 
 
@@ -154,19 +198,27 @@ moncode 00000000
 
 Symbol: moncode
    Definitions
-      At line 21 in file Src\Cligno.s
+      At line 22 in file Src\Cligno.s
    Uses
       None
 Comment: moncode unused
+sinon 0000001A
+
+Symbol: sinon
+   Definitions
+      At line 40 in file Src\Cligno.s
+   Uses
+      At line 31 in file Src\Cligno.s
+Comment: sinon used once
 timer_callback 00000000
 
 Symbol: timer_callback
    Definitions
-      At line 25 in file Src\Cligno.s
+      At line 27 in file Src\Cligno.s
    Uses
-      None
-Comment: timer_callback unused
-2 symbols
+      At line 18 in file Src\Cligno.s
+Comment: timer_callback used once
+3 symbols
 
 
 
@@ -195,16 +247,16 @@ Symbol: GPIOB_Clear
    Definitions
       At line 51 in file Src\..\Driver\DriverJeuLaser.inc
    Uses
-      None
-Comment: GPIOB_Clear unused
+      At line 45 in file Src\Cligno.s
+Comment: GPIOB_Clear used once
 GPIOB_Set 00000000
 
 Symbol: GPIOB_Set
    Definitions
       At line 33 in file Src\..\Driver\DriverJeuLaser.inc
    Uses
-      None
-Comment: GPIOB_Set unused
+      At line 36 in file Src\Cligno.s
+Comment: GPIOB_Set used once
 GPIOC_Clear 00000000
 
 Symbol: GPIOC_Clear
@@ -230,4 +282,4 @@ Symbol: PWM_Set_Value_TIM3_Ch3
       None
 Comment: PWM_Set_Value_TIM3_Ch3 unused
 7 symbols
-346 symbols in table
+350 symbols in table
