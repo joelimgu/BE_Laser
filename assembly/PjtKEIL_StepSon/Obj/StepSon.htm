@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Obj\StepSon.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\StepSon.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Mar 17 10:44:46 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Mar 22 18:13:32 2022
 <BR><P>
-<H3>Maximum Stack Usage =         24 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         40 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; Active_IT_Debordement_Timer
+main &rArr; PWM_Init_ff &rArr; Timer_1234_Init_ff
 <P>
 <H3>
 Mutually Recursive functions
@@ -91,7 +91,7 @@ Global Symbols
 <P><STRONG><a name="[37]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup-rvds.o(.text)
 </UL>
-<P><STRONG><a name="[42]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[46]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[39]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -101,17 +101,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[43]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[47]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[44]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[48]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[45]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[49]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[46]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[4a]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[47]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[4b]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[48]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[4c]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, startup-rvds.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup-rvds.o(RESET)
@@ -306,9 +306,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[49]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[4d]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[41]"></a>Active_IT_Debordement_Timer</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, timer_1234.o(i.Active_IT_Debordement_Timer))
+<P><STRONG><a name="[43]"></a>Active_IT_Debordement_Timer</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, timer_1234.o(i.Active_IT_Debordement_Timer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Active_IT_Debordement_Timer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -322,12 +322,42 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3f]"></a>CLOCK_GetHCLK</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetHCLK))
-<BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
+<P><STRONG><a name="[40]"></a>CLOCK_GetHCLK</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetHCLK))
+<BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
 </UL>
 
-<P><STRONG><a name="[40]"></a>CLOCK_GetTIMCLK</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetTIMCLK))
-<BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
+<P><STRONG><a name="[41]"></a>CLOCK_GetTIMCLK</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetTIMCLK))
+<BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
+</UL>
+
+<P><STRONG><a name="[4e]"></a>GPIOA_Clear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio.o(i.GPIOA_Clear), UNUSED)
+
+<P><STRONG><a name="[4f]"></a>GPIOA_Set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio.o(i.GPIOA_Set), UNUSED)
+
+<P><STRONG><a name="[50]"></a>GPIOB_Clear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio.o(i.GPIOB_Clear), UNUSED)
+
+<P><STRONG><a name="[51]"></a>GPIOB_Set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio.o(i.GPIOB_Set), UNUSED)
+
+<P><STRONG><a name="[52]"></a>GPIOC_Clear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio.o(i.GPIOC_Clear), UNUSED)
+
+<P><STRONG><a name="[53]"></a>GPIOC_Set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gpio.o(i.GPIOC_Set), UNUSED)
+
+<P><STRONG><a name="[42]"></a>GPIO_Configure</STRONG> (Thumb, 240 bytes, Stack size 20 bytes, gpio.o(i.GPIO_Configure))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Configure
+</UL>
+<BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[3e]"></a>PWM_Init_ff</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, timer_1234.o(i.PWM_Init_ff))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = PWM_Init_ff &rArr; Timer_1234_Init_ff
+</UL>
+<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
+</UL>
+<BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[45]"></a>PWM_Set_Value_TIM3_Ch3</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, timer_1234.o(i.PWM_Set_Value_TIM3_Ch3))
+<BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CallbackSon
 </UL>
 
 <P><STRONG><a name="[25]"></a>TIM1_CC_IRQHandler</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, timer_1234.o(i.TIM1_CC_IRQHandler))
@@ -353,33 +383,43 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup-rvds.o(RESET)
 </UL>
-<P><STRONG><a name="[3e]"></a>Timer_1234_Init_ff</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, timer_1234.o(i.Timer_1234_Init_ff))
+<P><STRONG><a name="[3f]"></a>Timer_1234_Init_ff</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, timer_1234.o(i.Timer_1234_Init_ff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Timer_1234_Init_ff
 </UL>
-<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetTIMCLK
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetHCLK
+<BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetTIMCLK
+<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetHCLK
 </UL>
-<BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
+<LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4a]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[54]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[4b]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[55]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[4c]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[56]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, principal.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = main &rArr; Active_IT_Debordement_Timer
+<P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, principal.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = main &rArr; PWM_Init_ff &rArr; Timer_1234_Init_ff
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
+<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartSon
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configure
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_Configure
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Active_IT_Debordement_Timer
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Active_IT_Debordement_Timer
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[38]"></a>CallbackSon</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, gestionson.o(moncode))
+<P><STRONG><a name="[38]"></a>CallbackSon</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, gestionson.o(moncode))
+<BR><BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Set_Value_TIM3_Ch3
+</UL>
 <BR>[Address Reference Count : 1]<UL><LI> principal.o(i.main)
-</UL><P>
+</UL>
+<P><STRONG><a name="[44]"></a>StartSon</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gestionson.o(moncode))
+<BR><BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+<P>
 <H3>
 Local Symbols
 </H3>

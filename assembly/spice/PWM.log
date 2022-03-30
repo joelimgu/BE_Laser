@@ -1,0 +1,22 @@
+Circuit: * U:\3MIC\BE_Laser\assembly\spice\PWM.asc
+
+Limiting fall time of source v1 to 1.01644e-021
+Direct Newton iteration for .op point succeeded.
+
+Date: Tue Mar 22 16:39:41 2022
+Total elapsed time: 0.855 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 300649
+traniter = 300645
+tranpoints = 150024
+accept = 150022
+rejected = 2
+matrix size = 7
+fillins = 0
+solver = Normal
+Matrix Compiler1: 142 bytes object code size  0.0/0.1/[0.0]
+Matrix Compiler2: 359 bytes object code size  0.1/0.5/[0.0]
+
