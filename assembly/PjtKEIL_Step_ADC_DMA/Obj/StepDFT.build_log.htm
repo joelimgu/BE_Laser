@@ -21,17 +21,17 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
 Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
-U:\3MIC\BE_Laser\assembly\PjtKEIL_StepSon\StepSon.uvprojx
-Project File Date:  03/22/2022
+U:\3MIC\BE_Laser\assembly\PjtKEIL_Step_ADC_DMA\StepDFT.uvprojx
+Project File Date:  03/30/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Simu'
 compiling principal.c...
-linking...
-Program Size: Code=2676 RO-data=11300 RW-data=168 ZI-data=1024  
-FromELF: creating hex file...
-".\Obj\StepSon.axf" - 0 Error(s), 0 Warning(s).
+Src\principal.c(24): error:  #79: expected a type specifier
+  void Systick_Period_ff( 0.005*RCC_FREQ );
+Src\principal.c: 0 warnings, 1 error
+".\Obj\StepDFT.axf" - 1 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +54,8 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:06
+Target not created.
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
