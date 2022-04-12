@@ -1,6 +1,6 @@
 # BE_Laser
 
-## Partie Signal 
+## Partie Electronique 
 Ce dossier contient les divers fichiers et dossiers de la partie signal : matlab, LTSpice... 
 
 ## Partie Assembleur 
