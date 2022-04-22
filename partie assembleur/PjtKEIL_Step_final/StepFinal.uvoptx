@@ -345,32 +345,27 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dft[19]</ItemText>
+          <ItemText>joueurs[0].score,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>joueurs[0].score</ItemText>
+          <ItemText>joueurs[1].score</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>joueurs[1].score</ItemText>
+          <ItemText>joueurs[2].score</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>joueurs[2].score</ItemText>
+          <ItemText>joueurs[3].score</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>joueurs[3].score</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\StepDFT\Src/principal.c\last_touched</ItemText>
+          <ItemText>index,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

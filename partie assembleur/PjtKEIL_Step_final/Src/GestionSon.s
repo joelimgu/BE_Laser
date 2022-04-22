@@ -21,6 +21,7 @@ index dcd 0
 	export SortieSon 
 	export index 
 	export StartSon
+	export GetIndex
 		
 ;Section ROM code (read only) :		
 	area    moncode,code,readonly
@@ -40,7 +41,7 @@ CallbackSon proc
 	cmp r3,r2;(LongueurSon-1)*2 => fin du son 
 	ble jouer_son
 	; on a joue une fois le son
-	;mov r3,#0
+	; mov r3,#0
 	mov r0, #0
 	bl PWM_Set_Value_TIM3_Ch3;
 	bx lr
@@ -76,5 +77,15 @@ StartSon proc
 	str r0,[r2]
 	bx lr
 	endp
+		
+		
+				
+
+GetIndex proc 
+	ldr r2, =index ; r2 = &index
+	ldr r0,[r2]
+	bx lr
+	endp
+		
 		
 	END

@@ -31,11 +31,12 @@ ARM Macro Assembler    Page 1
    21 00000008                 export           SortieSon
    22 00000008                 export           index
    23 00000008                 export           StartSon
-   24 00000008         
-   25 00000008         ;Section ROM code (read only) :  
-   26 00000008                 area             moncode,code,readonly
-   27 00000000         ; écrire le code ici  
-   28 00000000                 include          ..\Driver\DriverJeuLaser.inc
+   24 00000008                 export           GetIndex
+   25 00000008         
+   26 00000008         ;Section ROM code (read only) :  
+   27 00000008                 area             moncode,code,readonly
+   28 00000000         ; écrire le code ici  
+   29 00000000                 include          ..\Driver\DriverJeuLaser.inc
     1 00000000         
     2 00000000         ; Bibliotheque DriverJeuLaser (ancienne gassp72 adaptée 
                        2021 - TR)
@@ -62,13 +63,13 @@ ARM Macro Assembler    Page 1
                        icks);
    18 00000000                 import           PWM_Set_Value_TIM3_Ch3
    19 00000000         
-   20 00000000         
 
 
 
 ARM Macro Assembler    Page 2 
 
 
+   20 00000000         
    21 00000000         
    22 00000000         ;/**
    23 00000000         ; * @brief  Mise à 1 d'une broche GPIO 
@@ -105,82 +106,99 @@ ARM Macro Assembler    Page 2
    54 00000000                 import           GPIOC_Clear
    55 00000000         
    56 00000000                 end
-   29 00000000         
    30 00000000         
-   31 00000000         CallbackSon
+   31 00000000         
+   32 00000000         CallbackSon
                                proc
-   32 00000000         
-   33 00000000 4A14            ldr              r2, =index  ; r2 = &index
-   34 00000002 6813            ldr              r3,[r2]     ; r3 = *(&index) 
-   35 00000004 4A14            ldr              r2, =LongueurSon
-   36 00000006 6812            ldr              r2, [r2]    ; r2 = LongueurSon 
+   33 00000000         
+   34 00000000 4A16            ldr              r2, =index  ; r2 = &index
+   35 00000002 6813            ldr              r3,[r2]     ; r3 = *(&index) 
+   36 00000004 4A16            ldr              r2, =LongueurSon
+   37 00000006 6812            ldr              r2, [r2]    ; r2 = LongueurSon 
                                                             
-   37 00000008 F1A2 0201       sub              r2, #1
-   38 0000000C F04F 0002       mov              r0, #2
-   39 00000010 FB02 F200       mul              r2, r0      ; passer par regist
+   38 00000008 F1A2 0201       sub              r2, #1
+   39 0000000C F04F 0002       mov              r0, #2
+   40 00000010 FB02 F200       mul              r2, r0      ; passer par regist
                                                             re avec mul ou div.
                                                             .. 
-   40 00000014 4293            cmp              r3,r2       ;(LongueurSon-1)*2 
+   41 00000014 4293            cmp              r3,r2       ;(LongueurSon-1)*2 
                                                             => fin du son 
-   41 00000016 DD04            ble              jouer_son
-   42 00000018         ; on a joue une fois le son
-   43 00000018         ;mov r3,#0
-   44 00000018 F04F 0000       mov              r0, #0
-   45 0000001C F7FF FFFE       bl               PWM_Set_Value_TIM3_Ch3 ;
-   46 00000020 4770            bx               lr
+   42 00000016 DD04            ble              jouer_son
+   43 00000018         ; on a joue une fois le son
+   44 00000018         ; mov r3,#0
+   45 00000018 F04F 0000       mov              r0, #0
+   46 0000001C F7FF FFFE       bl               PWM_Set_Value_TIM3_Ch3 ;
 
 
 
 ARM Macro Assembler    Page 3 
 
 
-   47 00000022         
+   47 00000020 4770            bx               lr
    48 00000022         
-   49 00000022         jouer_son
-   50 00000022 490E            ldr              r1, =Son    ; r1 = &Son 
-   51 00000024 5EC9            ldrsh            r1, [r1,r3] ; r1 = première cas
+   49 00000022         
+   50 00000022         jouer_son
+   51 00000022 4910            ldr              r1, =Son    ; r1 = &Son 
+   52 00000024 5EC9            ldrsh            r1, [r1,r3] ; r1 = première cas
                                                             e du tableau 
-   52 00000026 F103 0302       add              r3,#2       ; incrementer index
+   53 00000026 F103 0302       add              r3,#2       ; incrementer index
                                                             
-   53 0000002A 4A0A            ldr              r2, =index  ; r2 = &index
-   54 0000002C 6013            str              r3, [r2]    ; garder valeur ind
+   54 0000002A 4A0C            ldr              r2, =index  ; r2 = &index
+   55 0000002C 6013            str              r3, [r2]    ; garder valeur ind
                                                             ex en memoire
-   55 0000002E F04F 025C       mov              r2, #92     ; 92 = (32767*2) / 
+   56 0000002E F04F 025C       mov              r2, #92     ; 92 = (32767*2) / 
                                                             719 arrondi pour qu
                                                             e ça rentre => shri
                                                             nk l'intervalle 
-   56 00000032 FB91 F1F2       sdiv             r1, r2      ;
-   57 00000036 F44F 72B4       mov              r2, #360
-   58 0000003A 4411            add              r1, r2      ; 720/2 => décalage
+   57 00000032 FB91 F1F2       sdiv             r1, r2      ;
+   58 00000036 F44F 72B4       mov              r2, #360
+   59 0000003A 4411            add              r1, r2      ; 720/2 => décalage
                                                              de l'[] pour enlev
                                                             er les négatifs 
-   59 0000003C 4808            ldr              r0, =SortieSon
-   60 0000003E 8001            strh             r1, [r0]    ; SortieSon = valeu
+   60 0000003C 480A            ldr              r0, =SortieSon
+   61 0000003E 8001            strh             r1, [r0]    ; SortieSon = valeu
                                                             r du son sur [0,719
                                                             ]
-   61 00000040 B500            push             {lr}
-   62 00000042 4608            mov              r0, r1
-   63 00000044 F7FF FFFE       bl               PWM_Set_Value_TIM3_Ch3 ;
-   64 00000048 BD00            pop              {pc}
-   65 0000004A         ;bx lr
-   66 0000004A         
-   67 0000004A                 endp
-   68 0000004A         
+   62 00000040 B500            push             {lr}
+   63 00000042 4608            mov              r0, r1
+   64 00000044 F7FF FFFE       bl               PWM_Set_Value_TIM3_Ch3 ;
+   65 00000048 BD00            pop              {pc}
+   66 0000004A         ;bx lr
+   67 0000004A         
+   68 0000004A                 endp
    69 0000004A         
    70 0000004A         
    71 0000004A         
    72 0000004A         
-   73 0000004A         StartSon
+   73 0000004A         
+   74 0000004A         StartSon
                                proc
-   74 0000004A 4A02            ldr              r2, =index  ; r2 = &index
-   75 0000004C F04F 0000       mov              r0,#0
-   76 00000050 6010            str              r0,[r2]
-   77 00000052 4770            bx               lr
-   78 00000054                 endp
-   79 00000054         
-   80 00000054                 END
+   75 0000004A 4A04            ldr              r2, =index  ; r2 = &index
+   76 0000004C F04F 0000       mov              r0,#0
+   77 00000050 6010            str              r0,[r2]
+   78 00000052 4770            bx               lr
+   79 00000054                 endp
+   80 00000054         
+   81 00000054         
+   82 00000054         
+   83 00000054         
+   84 00000054         GetIndex
+                               proc
+   85 00000054 4A01            ldr              r2, =index  ; r2 = &index
+   86 00000056 6810            ldr              r0,[r2]
+   87 00000058 4770            bx               lr
+   88 0000005A                 endp
+   89 0000005A         
+   90 0000005A         
+   91 0000005A                 END
+              00 00 00000000 
               00000000 
-              00000000 
+
+
+
+ARM Macro Assembler    Page 4 
+
+
               00000000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
@@ -218,7 +236,7 @@ Symbol: SortieSon
       At line 17 in file Src\GestionSon.s
    Uses
       At line 21 in file Src\GestionSon.s
-      At line 59 in file Src\GestionSon.s
+      At line 60 in file Src\GestionSon.s
 
 index 00000004
 
@@ -227,9 +245,10 @@ Symbol: index
       At line 18 in file Src\GestionSon.s
    Uses
       At line 22 in file Src\GestionSon.s
-      At line 33 in file Src\GestionSon.s
-      At line 53 in file Src\GestionSon.s
-      At line 74 in file Src\GestionSon.s
+      At line 34 in file Src\GestionSon.s
+      At line 54 in file Src\GestionSon.s
+      At line 75 in file Src\GestionSon.s
+      At line 85 in file Src\GestionSon.s
 
 maram 00000000
 
@@ -250,15 +269,23 @@ CallbackSon 00000000
 
 Symbol: CallbackSon
    Definitions
-      At line 31 in file Src\GestionSon.s
+      At line 32 in file Src\GestionSon.s
    Uses
       At line 20 in file Src\GestionSon.s
 Comment: CallbackSon used once
+GetIndex 00000054
+
+Symbol: GetIndex
+   Definitions
+      At line 84 in file Src\GestionSon.s
+   Uses
+      At line 24 in file Src\GestionSon.s
+Comment: GetIndex used once
 StartSon 0000004A
 
 Symbol: StartSon
    Definitions
-      At line 73 in file Src\GestionSon.s
+      At line 74 in file Src\GestionSon.s
    Uses
       At line 23 in file Src\GestionSon.s
 Comment: StartSon used once
@@ -266,19 +293,19 @@ jouer_son 00000022
 
 Symbol: jouer_son
    Definitions
-      At line 49 in file Src\GestionSon.s
+      At line 50 in file Src\GestionSon.s
    Uses
-      At line 41 in file Src\GestionSon.s
+      At line 42 in file Src\GestionSon.s
 Comment: jouer_son used once
 moncode 00000000
 
 Symbol: moncode
    Definitions
-      At line 26 in file Src\GestionSon.s
+      At line 27 in file Src\GestionSon.s
    Uses
       None
 Comment: moncode unused
-4 symbols
+5 symbols
 
 
 
@@ -339,7 +366,7 @@ Symbol: LongueurSon
    Definitions
       At line 4 in file Src\GestionSon.s
    Uses
-      At line 35 in file Src\GestionSon.s
+      At line 36 in file Src\GestionSon.s
 Comment: LongueurSon used once
 PWM_Set_Value_TIM3_Ch3 00000000
 
@@ -353,8 +380,8 @@ External symbols
    Definitions
       At line 18 in file Src\..\Driver\DriverJeuLaser.inc
    Uses
-      At line 45 in file Src\GestionSon.s
-      At line 63 in file Src\GestionSon.s
+      At line 46 in file Src\GestionSon.s
+      At line 64 in file Src\GestionSon.s
 
 Son 00000000
 
@@ -362,7 +389,7 @@ Symbol: Son
    Definitions
       At line 3 in file Src\GestionSon.s
    Uses
-      At line 50 in file Src\GestionSon.s
+      At line 51 in file Src\GestionSon.s
 Comment: Son used once
 9 symbols
-354 symbols in table
+355 symbols in table
