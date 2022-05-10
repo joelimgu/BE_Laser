@@ -34,6 +34,7 @@ typedef struct {
 
 joueur joueurs[4]={{joueur1,0,SEUIL},{joueur2,0,SEUIL},{joueur3,0,SEUIL},{joueur4,0,SEUIL}};
 
+char cible_active=1; 
 
 
 // buffer dma en global pour que le callback puisse s'en servir pour les calculs
@@ -44,7 +45,7 @@ int dfttest;
 
 void DMA_callback(){
 	// si le son est en train de se jouer, on ne fait rien pour éviter que le son soit moche à cause de l'interrupt 
-	if (GetIndex() !=FIN_SON) return ; 
+	if (GetIndex() !=FIN_SON) return ;
 	Start_DMA1(64);
 	Wait_On_End_Of_DMA1();
 	Stop_DMA1;
@@ -53,16 +54,18 @@ void DMA_callback(){
 	}
  
 	char touche = 0;
-	for (int i = 0; i<4; i++) {
+	for (char i = 0; i<4; i++) {
 		// partie entière de la dft des fréquences correspondant aux joueurs 
 		// dfttest=dft[joueurs[i].freq]&0xFFC00000>>22; // en fait faut pas prendre la partie entière parce que ce qu'on voit dans dft[19] par ex est interprété comme 99000000 quand on a touché 
 		if ((dft[joueurs[i].freq]) > joueurs[i].amplitude_min) {
 			if (last_touched == 0) {
 				joueurs[i].score += 1;
-				// remet l'index à 0 mais ne rentre plus jamais dans le callbackson 
-				// est-ce qu'on rentre dans la dma en continu? 
-				StartSon(); 
-
+				Prepare_Afficheur(i+1,joueurs[i].score); 
+				StartSon();
+				Prepare_Clear_LED(cible_active-1); 
+				cible_active=(cible_active%4)+1; 
+				Choix_Capteur(cible_active); 
+				Prepare_Set_LED(cible_active-1); 
 			}
 			touche = 1;
 		}
@@ -112,8 +115,10 @@ void setup(void){
 	Timer_1234_Init_ff( TIM4,6552 ); // TE*RCC_FREQ 
 	Active_IT_Debordement_Timer( TIM4, 2, CallbackSon ); 
 	
-	
-	
+	Init_Affichage(); 
+	Prepare_Set_LED(cible_active-1); 
+	Choix_Capteur(cible_active); 
+
 }
 
 int main(void){

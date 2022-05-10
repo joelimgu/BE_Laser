@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Obj\StepDFT.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\StepDFT.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 22 12:11:50 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue May 10 17:31:38 2022
 <BR><P>
 <H3>Maximum Stack Usage =         64 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -92,7 +92,7 @@ Global Symbols
 <P><STRONG><a name="[37]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup-rvds.o(.text)
 </UL>
-<P><STRONG><a name="[5a]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[5d]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[3a]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -102,17 +102,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[5b]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[5e]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[5c]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[5f]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[5d]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[60]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[5e]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[61]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[5f]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[62]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[60]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[63]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, startup-rvds.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup-rvds.o(RESET)
@@ -302,32 +302,48 @@ Global Symbols
 <P><STRONG><a name="[3f]"></a>Sortir_Trame</STRONG> (Thumb, 208 bytes, Stack size 0 bytes, affichage_valise.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> affichage_valise.o(.text)
 </UL>
-<P><STRONG><a name="[3d]"></a>Decodage_7_Seg</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
+<P><STRONG><a name="[3d]"></a>Decodage_7_Seg</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, affichage_valise.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prepare_Afficheur
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Affichage
 </UL>
 
-<P><STRONG><a name="[3c]"></a>Init_Affichage</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, affichage_valise.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decodage_7_Seg
+<P><STRONG><a name="[3c]"></a>Init_Affichage</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, affichage_valise.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Init_Affichage &rArr; Active_IT_Debordement_Timer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decodage_7_Seg
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mise_A_Jour_Afficheurs_LED
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configure
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Active_IT_Debordement_Timer
 </UL>
-
-<P><STRONG><a name="[43]"></a>Prepare_Afficheur</STRONG> (Thumb, 76 bytes, Stack size 28 bytes, affichage_valise.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decodage_7_Seg
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[61]"></a>Prepare_Set_Point_Unite</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
+<P><STRONG><a name="[43]"></a>Prepare_Afficheur</STRONG> (Thumb, 76 bytes, Stack size 28 bytes, affichage_valise.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Prepare_Afficheur
+</UL>
+<BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decodage_7_Seg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_callback
+</UL>
 
-<P><STRONG><a name="[62]"></a>Prepare_Clear_Point_Unite</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
+<P><STRONG><a name="[64]"></a>Prepare_Set_Point_Unite</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
 
-<P><STRONG><a name="[63]"></a>Prepare_Set_LED</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
+<P><STRONG><a name="[65]"></a>Prepare_Clear_Point_Unite</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
 
-<P><STRONG><a name="[64]"></a>Prepare_Clear_LED</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
+<P><STRONG><a name="[4e]"></a>Prepare_Set_LED</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, affichage_valise.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_callback
+</UL>
 
-<P><STRONG><a name="[65]"></a>Choix_Capteur</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, affichage_valise.o(.text), UNUSED)
+<P><STRONG><a name="[4c]"></a>Prepare_Clear_LED</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, affichage_valise.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_callback
+</UL>
+
+<P><STRONG><a name="[4d]"></a>Choix_Capteur</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, affichage_valise.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_callback
+</UL>
 
 <P><STRONG><a name="[3b]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -341,7 +357,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Active_IT_Debordement_Timer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Affichage
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
 <P><STRONG><a name="[45]"></a>CLOCK_Configure</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, clock.o(i.CLOCK_Configure))
@@ -349,30 +365,34 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_HPRECompute
 </UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[4f]"></a>CLOCK_GetADCCLK</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetADCCLK))
-<BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TimingADC_ActiveADC_ff
+<P><STRONG><a name="[52]"></a>CLOCK_GetADCCLK</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetADCCLK))
+<BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TimingADC_ActiveADC_ff
 </UL>
 
-<P><STRONG><a name="[50]"></a>CLOCK_GetHCLK</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetHCLK))
+<P><STRONG><a name="[53]"></a>CLOCK_GetHCLK</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetHCLK))
 <BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TimingADC_ActiveADC_ff
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TimingADC_ActiveADC_ff
 </UL>
 
-<P><STRONG><a name="[51]"></a>CLOCK_GetTIMCLK</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetTIMCLK))
+<P><STRONG><a name="[54]"></a>CLOCK_GetTIMCLK</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, clock.o(i.CLOCK_GetTIMCLK))
 <BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
 </UL>
 
-<P><STRONG><a name="[38]"></a>DMA_callback</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, principal.o(i.DMA_callback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = DMA_callback
+<P><STRONG><a name="[38]"></a>DMA_callback</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, principal.o(i.DMA_callback))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DMA_callback &rArr; Prepare_Afficheur
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wait_On_End_Of_DMA1
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start_DMA1
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartSon
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prepare_Set_LED
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prepare_Clear_LED
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prepare_Afficheur
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetIndex
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DFT
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Choix_Capteur
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> principal.o(i.setup)
 </UL>
@@ -392,45 +412,45 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Configure
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Affichage
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[56]"></a>Init_ADC1_DMA1</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, adc_dma.o(i.Init_ADC1_DMA1))
-<BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<P><STRONG><a name="[59]"></a>Init_ADC1_DMA1</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, adc_dma.o(i.Init_ADC1_DMA1))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[4c]"></a>Init_Conversion_On_Trig_Timer_ff</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, adc_dma.o(i.Init_Conversion_On_Trig_Timer_ff))
+<P><STRONG><a name="[4f]"></a>Init_Conversion_On_Trig_Timer_ff</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, adc_dma.o(i.Init_Conversion_On_Trig_Timer_ff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Init_Conversion_On_Trig_Timer_ff &rArr; PWM_Init_ff &rArr; Timer_1234_Init_ff
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
 </UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[4e]"></a>Init_TimingADC_ActiveADC_ff</STRONG> (Thumb, 200 bytes, Stack size 24 bytes, adc_dma.o(i.Init_TimingADC_ActiveADC_ff))
+<P><STRONG><a name="[51]"></a>Init_TimingADC_ActiveADC_ff</STRONG> (Thumb, 200 bytes, Stack size 24 bytes, adc_dma.o(i.Init_TimingADC_ActiveADC_ff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Init_TimingADC_ActiveADC_ff
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetHCLK
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetADCCLK
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetHCLK
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetADCCLK
 </UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[4d]"></a>PWM_Init_ff</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, timer_1234.o(i.PWM_Init_ff))
+<P><STRONG><a name="[50]"></a>PWM_Init_ff</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, timer_1234.o(i.PWM_Init_ff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = PWM_Init_ff &rArr; Timer_1234_Init_ff
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Conversion_On_Trig_Timer_ff
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Conversion_On_Trig_Timer_ff
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[59]"></a>PWM_Set_Value_TIM3_Ch3</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, timer_1234.o(i.PWM_Set_Value_TIM3_Ch3))
+<P><STRONG><a name="[5c]"></a>PWM_Set_Value_TIM3_Ch3</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, timer_1234.o(i.PWM_Set_Value_TIM3_Ch3))
 <BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CallbackSon
 </UL>
 
-<P><STRONG><a name="[55]"></a>Single_Channel_ADC</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, adc_dma.o(i.Single_Channel_ADC))
-<BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<P><STRONG><a name="[58]"></a>Single_Channel_ADC</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, adc_dma.o(i.Single_Channel_ADC))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
 <P><STRONG><a name="[48]"></a>Start_DMA1</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, adc_dma.o(i.Start_DMA1))
@@ -440,12 +460,12 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, timer_systick.o(i.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup-rvds.o(RESET)
 </UL>
-<P><STRONG><a name="[53]"></a>Systick_Period_ff</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, timer_systick.o(i.Systick_Period_ff))
-<BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<P><STRONG><a name="[56]"></a>Systick_Period_ff</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, timer_systick.o(i.Systick_Period_ff))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
-<P><STRONG><a name="[54]"></a>Systick_Prio_IT</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, timer_systick.o(i.Systick_Prio_IT))
-<BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<P><STRONG><a name="[57]"></a>Systick_Prio_IT</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, timer_systick.o(i.Systick_Prio_IT))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
 <P><STRONG><a name="[25]"></a>TIM1_CC_IRQHandler</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, timer_1234.o(i.TIM1_CC_IRQHandler))
@@ -474,12 +494,12 @@ Global Symbols
 <P><STRONG><a name="[3e]"></a>Timer_1234_Init_ff</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, timer_1234.o(i.Timer_1234_Init_ff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Timer_1234_Init_ff
 </UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetTIMCLK
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetHCLK
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetTIMCLK
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_GetHCLK
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Affichage
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Affichage
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 
 <P><STRONG><a name="[49]"></a>Wait_On_End_Of_DMA1</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, adc_dma.o(i.Wait_On_End_Of_DMA1))
@@ -496,45 +516,48 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = main &rArr; setup &rArr; Init_Conversion_On_Trig_Timer_ff &rArr; PWM_Init_ff &rArr; Timer_1234_Init_ff
 </UL>
 <BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mise_A_Jour_Afficheurs_LED
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[52]"></a>setup</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, principal.o(i.setup))
+<P><STRONG><a name="[55]"></a>setup</STRONG> (Thumb, 150 bytes, Stack size 8 bytes, principal.o(i.setup))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = setup &rArr; Init_Conversion_On_Trig_Timer_ff &rArr; PWM_Init_ff &rArr; Timer_1234_Init_ff
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_1234_Init_ff
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Prio_IT
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Period_ff
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Single_Channel_ADC
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TimingADC_ActiveADC_ff
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Conversion_On_Trig_Timer_ff
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_ADC1_DMA1
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Prio_IT
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Period_ff
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Single_Channel_ADC
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prepare_Set_LED
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Init_ff
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TimingADC_ActiveADC_ff
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Conversion_On_Trig_Timer_ff
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Affichage
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_ADC1_DMA1
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Configure
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Choix_Capteur
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLOCK_Configure
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Active_IT_Debordement_Timer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[57]"></a>Xr</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, dft.o(moncode))
+<P><STRONG><a name="[5a]"></a>Xr</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, dft.o(moncode))
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DFT
 </UL>
 
-<P><STRONG><a name="[58]"></a>Xi</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, dft.o(moncode))
+<P><STRONG><a name="[5b]"></a>Xi</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, dft.o(moncode))
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DFT
 </UL>
 
 <P><STRONG><a name="[4a]"></a>DFT</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, dft.o(moncode))
-<BR><BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Xi
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Xr
+<BR><BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Xi
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Xr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_callback
 </UL>
 
-<P><STRONG><a name="[39]"></a>CallbackSon</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, gestionson.o(moncode))
-<BR><BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Set_Value_TIM3_Ch3
+<P><STRONG><a name="[39]"></a>CallbackSon</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, gestionson.o(moncode))
+<BR><BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Set_Value_TIM3_Ch3
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> principal.o(i.setup)
 </UL>

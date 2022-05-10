@@ -43,8 +43,9 @@ CallbackSon proc
 	; on a joue une fois le son
 	; mov r3,#0
 	mov r0, #0
+	push {lr}
 	bl PWM_Set_Value_TIM3_Ch3;
-	bx lr
+	pop {pc}
 
 
 jouer_son
