@@ -87,14 +87,14 @@ DFT proc
 	mov r7, r1
 	
 	bl Xr
-	mov r4,r0 ; on gqrde le resultqt de Xr
+	mov r4,r0 ; on gqrde le resultat de Xr
 	; on remet les arguments pour l,apel a Xi
 	mov r0, r6
 	mov r1, r7
 	bl Xi
 	mov r8, r0 ; on gqrde le resultqt de Xi
 	
-	smull r4,r5,r4,r4 ; 10:54 ; miltiplicqtion su 64 bits, on garde dans r5 les poids forts et dans r4 les poids faibles
+	smull r4,r5,r4,r4 ; 10:54 ; multiplication sur 64 bits, on garde dans r5 les poids forts et dans r4 les poids faibles
 	smull r8,r9,r8,r8 ; 10:54
 	add r0,r5,r9 ; on prend juste les 32 bits de poids fort et on a un format 10:22
 	

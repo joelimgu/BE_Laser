@@ -25,7 +25,7 @@ extern int GetIndex(void);
 /* si on note int * LeSignal 
 il prend les premières cases de LeSignal et les transforme en (int *) => nul un peu */ 
 
-// les scores s'implémentent n'importe comment 
+
 typedef struct {
 	int freq; 
 	int score;
@@ -55,8 +55,7 @@ void DMA_callback(){
  
 	char touche = 0;
 	for (char i = 0; i<4; i++) {
-		// partie entière de la dft des fréquences correspondant aux joueurs 
-		// dfttest=dft[joueurs[i].freq]&0xFFC00000>>22; // en fait faut pas prendre la partie entière parce que ce qu'on voit dans dft[19] par ex est interprété comme 99000000 quand on a touché 
+		
 		if ((dft[joueurs[i].freq]) > joueurs[i].amplitude_min) {
 			if (last_touched == 0) {
 				joueurs[i].score += 1;
@@ -64,6 +63,7 @@ void DMA_callback(){
 				StartSon();
 				Prepare_Clear_LED(cible_active-1); 
 				cible_active=(cible_active%4)+1; 
+ 
 				Choix_Capteur(cible_active); 
 				Prepare_Set_LED(cible_active-1); 
 			}
@@ -72,7 +72,6 @@ void DMA_callback(){
 	}
 	
 	
-	// jouer le son si un des joueurs a touché 
 	if (touche == 1) {
 		last_touched = 1;
 	} else {
